@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="area3">
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="body1">
+      <div class="container">
+        <form method="post">
+          {% csrf_token %}
+          <h2>Login</h2>
+
+          <div class="input_box">
+            <i class="fas fa-user-circle"></i>
+            {{ form.username }}
+            <label for="">Email</label>
+          </div>
+
+          <div class="input_box">
+            <i class="fas fa-lock"></i>
+            {{ form.password }}
+            <label for="">Password</label>
+          </div>
+
+          <button type="submit">Log In</button>
+
+          <div class="bottom">
+            <div class="left">
+              <input type="checkbox" id="check" />
+              <label for="check">Remember Me</label>
+            </div>
+
+            <div class="right">
+              <label for=""><a href="#">Forgot Password?</a></label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="sign-up">
+        <button onclick="goToSign()"><p>Sign Up Now</p></button>
+        <button onclick="goToHome()"><p>Home</p></button>
+      </div>
+    </div>
+    <script>
+      function goToHome() {
+        window.location.href = "{% url 'home' %}";
+      }
+
+      function goToSign() {
+        window.location.href = "{% url 'sign' %}";
+      }
+    </script>
+  </body>
+</html>

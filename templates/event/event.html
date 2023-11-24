@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EVENT</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <script defer src="{% static 'popup.js' %}"></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <img src="{% static 'image/hub200.png' %}" alt="" />
+      <div class="navbar_items">
+        <button class="headerbtn" onclick="goToHome()"><p>HOME</p></button>
+        <button class="headerbtn" onclick="goToEvents()"><p>EVENTS</p></button>
+        <button class="headerbtn" onclick="goToScan()"><p>SCAN</p></button>
+        <button class="headerbtn" onclick="goToAbout()"><p>ABOUT</p></button>
+      </div>
+      <div class="buts">
+        <button class="but1" onclick="goToSign()">Sign Up</button>
+        <button class="but2" onclick="goToLogin()">Log In</button>
+      </div>
+    </div>
+    <div class="header2">
+      <h2>EVENTS</h2>
+      <div class="gallery">
+        <div class="gallery-container">
+          {% for event in events %}
+          <div class="gallery-item gallery-item-3" data-index="3" id="g3">
+            <img
+              src="{{ event.image.url }}"
+              alt="{{ event.name_event }} Image"
+              width="300"
+            />
+            <h1>{{ event.name_event }}</h1>
+            <p>{{ event.ditils }}</p>
+
+            <button data-modal-target="#modal">MORE</button>
+            <button onclick="scrollToSection()">REGISTER</button>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="gallery-controls"></div>
+        <div class="modal" id="modal">
+          <div class="modal-header">
+            <div class="title"><p>EVENT DESCRIPTON</p></div>
+            <div class="close">
+              <button data-close-button class="close-button">&times;</button>
+            </div>
+          </div>
+
+          <div class="modal-body">
+            <p>{{ event.ditils }}</p>
+          </div>
+          <button
+            onclick="scrollToSection()"
+            class="modal-btn"
+            data-close-button
+            class="close-button"
+          >
+            REGISTER
+          </button>
+        </div>
+        <div id="overlay"></div>
+      </div>
+    </div>
+
+    <div class="registeration" id="registeration">
+      <div class="container5">
+        <header>Registration</header>
+
+        <form method="POST" action="">
+          {% csrf_token %}
+
+          <div class="details personal">
+            <span class="title">Personal Details</span>
+
+            <div class="fields">
+              <div class="input-field">
+                <label for="full_name">Full Name</label>
+                {{ form.name }}
+              </div>
+              <div class="input-field">
+                <label for="event_select">Event</label>
+                {{ form.event }}
+              </div>
+
+              <div class="input-field">
+                <label for="age">Age</label>
+                {{ form.age }}
+              </div>
+              <div class="input-field">
+                <label for="email">Email</label>
+                {{ form.email }}
+              </div>
+              <div class="input-field">
+                <label for="mobile_number">Mobile Number</label>
+                {{ form.phone_number }}
+              </div>
+              <div class="input-field">
+                <label for="gender">Gender</label>
+
+                {{ form.gender }}
+              </div>
+            </div>
+          </div>
+
+          <div class="details ID">
+            <span class="title1">Other Details</span>
+
+            <div class="fields">
+              <div class="input-field">
+                <label for="city">City</label>
+                {{ form.city }}
+              </div>
+              <div class="input-field">
+                <label for="university">University</label>
+                {{ form.university }}
+              </div>
+              <div class="input-field">
+                <label for="study_section">Study Section</label>
+                {{ form.study_section }}
+              </div>
+              <div class="input-field">
+                <label>How Did You Know About This Event?</label>
+
+                {{ form.knew_event }}
+              </div>
+              <div class="input-field">
+                <label>Did You Visit HUB200 Before?</label>
+
+                {{ form.visit_hub200 }}
+              </div>
+              <div class="input-field">
+                <label for="arriving_at_time"
+                  >Arriving At The Required Time</label
+                >
+
+                {{ form.artving_at_time }}
+              </div>
+            </div>
+          </div>
+
+          <div class="details address">
+            <span class="title">About</span>
+            <div class="fields">
+              <div class="input-field1">{{ form.about_me }}</div>
+            </div>
+          </div>
+
+          <div class="buttonss">
+            <div class="buttonss">
+              <button class="sumbit">
+                <span class="btnText">Submit</span>
+                <i class="uil uil-navigator"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script defer src="{% static 'script.js' %}"></script>
+    <script>
+      function goToHome() {
+        window.location.href = "{% url 'home' %}";
+      }
+
+      function goToEvents() {
+        window.location.href = "{% url 'all_events' %}";
+      }
+
+      function goToScan() {
+        window.location.href = "{% url 'scan' %}";
+      }
+
+      function goToSign() {
+        window.location.href = "{% url 'sign' %}";
+      }
+
+      function goToLogin() {
+        window.location.href = "{% url 'login' %}";
+      }
+      function goToAbout() {
+        window.location.href = "{% url 'about' %}";
+      }
+      function scrollToSection() {
+        var targetElement = document.getElementById("registeration");
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

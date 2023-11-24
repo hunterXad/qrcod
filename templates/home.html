@@ -1,0 +1,321 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="area">
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="navbar">
+      <img src="{% static 'image/hub200.png' %}" alt="" />
+      <div class="navbar_items">
+        <button class="headerbtn" onclick="goToHome()"><p>HOME</p></button>
+        <button class="headerbtn" onclick="goToEvents()"><p>EVENTS</p></button>
+        <button class="headerbtn" onclick="goToScan()"><p>SCAN</p></button>
+        <button class="headerbtn" onclick="goToAbout()"><p>ABOUT</p></button>
+      </div>
+      <div class="buts">
+        <button class="but1" onclick="goToSign()">Sign Up</button>
+        <button class="but2" onclick="goToLogin()">Log In</button>
+      </div>
+    </div>
+    <div class="header">
+      <h1>
+        QR Registration <br />
+        For Events
+      </h1>
+
+      <div class="blur_box">
+        <div class="blur_box1">
+          <p class="blur_box2">
+            Welcome to our leading platform for smart event check-ins! We are
+            here to <br />provide a unique and enhanced experience for both
+            event organizers and <br />participants. Explore with us a new and
+            intelligent way to check in and <br />engage in events with ease and
+            convenience.
+          </p>
+        </div>
+        <h3>If you're curious about the process</h3>
+        <div class="blur_buttons">
+          <button onclick="goToEvents()">Explore Events</button>
+          <button onclick="goToScan()">Scan QR Code</button>
+        </div>
+      </div>
+    </div>
+    <div class="middle">
+      <div class="first1">
+        <div class="first">
+          <div class="box">
+            <div class="circle" id="c1">1</div>
+            <h1>Ease of Use</h1>
+            <p>
+              Participants can easily scan QR codes with their smartphones,
+              facilitating quick and effortless registration without the need
+              for manual data entry
+            </p>
+          </div>
+          <div class="box">
+            <div class="circle" id="c2">2</div>
+            <h1>Accurate Registration</h1>
+            <p>
+              QR codes reduce the likelihood of data entry errors, as
+              information is automatically read from the code, making the
+              attendance registration process precise and efficient
+            </p>
+          </div>
+          <div class="box">
+            <div class="circle" id="c3">3</div>
+            <h1>Attendance Tracking</h1>
+            <p>
+              QR codes can be used to effectively track participant attendance,
+              recording the time and date when the code is scanned, providing
+              organizers with immediate insights into attendance
+            </p>
+          </div>
+          <div class="box">
+            <div class="circle" id="c4">4</div>
+            <h1>Information Security</h1>
+            <p>
+              Participant information in QR codes can be encrypted, enhancing
+              security and minimizing the risk of manipulation or unauthorized
+              use
+            </p>
+          </div>
+          <div class="box">
+            <div class="circle" id="c5">5</div>
+            <h1>Customization Options</h1>
+            <p>
+              QR codes can be easily customized to align with the visual
+              identity of the event or organization, adding an extra element of
+              professionalism and uniqueness
+            </p>
+          </div>
+          <div class="box">
+            <div class="circle" id="c6">6</div>
+            <h1>Paperless Solution</h1>
+            <p>
+              The use of QR codes helps avoid the need for printing excessive
+              paper for attendance registration, contributing to environmental
+              conservation and cost savings
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="gif_container">
+        <div class="gif">
+          <img src="{% static 'image/corona-virus.gif' %}" alt="" />
+          <p>
+            <span>We Generate QR codes <br />For Events</span> <br />
+            <br />
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna adipi sed do
+          </p>
+        </div>
+      </div>
+      <img src="{% static 'image/rafiki.png' %}" alt="" class="rafiki" />
+      <div class="box123">
+        <div class="box1">
+          <p>
+            <span>We support all platforms</span><br />
+            Our services are available for all types of computers and tablets,
+            in addition to mobile phones, which provides an ideal environment
+            for all users on various electronic platforms
+          </p>
+          <img src="{% static 'image/box1.png' %}" alt="" />
+        </div>
+        <div class="box2">
+          <img src="{% static 'image/box2.png' %}" alt="" />
+          <p>
+            <span>Customer service center</span><br />
+            We provide a specialized staff around the clock to answer all users’
+            questions and inquiries and help them solve the problems they may
+            face
+          </p>
+        </div>
+        <div class="box3">
+          <p>
+            <span>Security, trust, protection </span><br />
+            All our servers are secure and immune to hacking and are unreadable,
+            as all data is processed by artificial intelligence, which provides
+            security and protection for user information
+          </p>
+          <img src="{% static 'image/box3.png' %}" alt="" />
+        </div>
+      </div>
+      <div class="last">
+        <h1>Distinctive <span> user feedback</span></h1>
+        <br />
+        <div class="comments">
+          <div class="com">
+            <div class="head_com">
+              <div class="bkr1">
+                <img
+                  src="{% static 'image/baker_full.jpg' %}"
+                  alt=""
+                  class="bkr"
+                />
+                <p><span>Baker Ahmed</span><br />Student</p>
+              </div>
+              <div class="stars">
+                <img src="{% static 'image/Star.png' %}" alt="" />
+                <img src="{% static 'image/Star.png' %}" alt="" />
+                <img src="{% static 'image/Star.png' %}" alt="" />
+                <img src="{% static 'image/Star.png' %}" alt="" />
+                <img src="{% static 'image/Star.png' %}" alt="" />
+              </div>
+            </div>
+            <p>
+              It is a very useful site and it has helped me a lot. Thank you
+              very much for this useful service
+            </p>
+          </div>
+          <div class="com">
+            <div class="head_com">
+              <div class="bkr1">
+                <img
+                  src="{% static 'image/baker_full.jpg' %}"
+                  alt=""
+                  class="bkr"
+                />
+                <p><span>Baker Ahmed</span><br />Student</p>
+              </div>
+              <div class="stars">
+                <img src="{% static 'image/Star.png' %}" alt="" />
+                <img src="{% static 'image/Star.png' %}" alt="" />
+                <img src="{% static 'image/Star.png' %}" alt="" />
+                <img src="{% static 'image/Star.png' %}" alt="" />
+                <img src="{% static 'image/Star.png' %}" alt="" />
+              </div>
+            </div>
+            <p>
+              It is a very useful site and it has helped me a lot. Thank you
+              very much for this useful service
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer_box">
+        <p>
+          Want To Join An Event?<br /><br />
+          What Are You Waiting For! Sign Up And Join Our Events
+        </p>
+        <button onclick="goToSign()">Sign Up</button>
+        <div class="d-flex flex-column justify-content-center w-100 h-100">
+          <div
+            class="d-flex flex-column justify-content-center align-items-center"
+          ></div>
+        </div>
+      </div>
+      <div class="footer_items">
+        <div class="hub">
+          <img src="{% static 'image/hub200.png' %}" alt="" />
+          <p>Copyright 2023 by HUB200</p>
+        </div>
+        <div class="help">
+          Help?
+          <p>Lorem ipsum dolor</p>
+          <p>Excepteur sint occaecat cupidatat</p>
+          <p>consectetur adipiscing</p>
+          <p>Lorem ipsum dolor</p>
+          <p>Excepteur sint occaecat cupidatat</p>
+        </div>
+        <div class="docs">
+          Related Docs.
+          <p>Excepteur sint occaecat cupidatat</p>
+          <p>Lorem ipsum dolor</p>
+          <p>consectetur adipiscing</p>
+        </div>
+        <div class="follow">
+          <p>Follow Us</p>
+          <div class="social">
+            <ul>
+              <li>
+                <a class="facebook" href="#">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a class="twitter" href="#">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a class="instagram" href="#">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a class="google" href="#">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function goToHome() {
+        window.location.href = "{% url 'home' %}";
+      }
+
+      function goToEvents() {
+        window.location.href = "{% url 'all_events' %}";
+      }
+
+      function goToScan() {
+        window.location.href = "{% url 'scan' %}";
+      }
+
+      function goToSign() {
+        window.location.href = "{% url 'sign' %}";
+      }
+
+      function goToLogin() {
+        window.location.href = "{% url 'login' %}";
+      }
+      function goToAbout() {
+        window.location.href = "{% url 'about' %}";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registeration</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div class="area3">
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="reg-cont">
+      <h1>Registeration Completed</h1>
+      <h3>We will send you a <span>QR CODE</span></h3>
+      <h5>Please Check Your Email!</h5>
+      <button onclick="goToHome()">HOME</button>
+    </div>
+
+    <script>
+      function goToHome() {
+        window.location.href = "{% url 'home' %}";
+      }
+    </script>
+  </body>
+</html>

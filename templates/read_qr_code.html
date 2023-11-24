@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Sign Up</title>
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body>
+    <div class="area3" >
+        <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+</div >
+      <div class="body1">
+
+         <div class="container1">
+         
+            <form method="post">
+               {% csrf_token %}
+                 <h2>Sign Up</h2>
+     
+                 <div class="container7">
+                  <div class="one7">
+                     <div class="input_box">
+                      <label for="id_first_name">First name:</label>
+                      <input type="text" name="first_name" maxlength="30" required id="id_first_name">
+                    </div>
+        
+                    <div class="input_box">
+                      <label for="id_last_name">Last name:</label>
+                      <input type="text" name="last_name" maxlength="30" required id="id_last_name">
+                    </div>
+                  </div>
+   
+                  <div class="two7">
+                    <div class="input_box">
+                      <label for="id_phone_number">Phone number:</label>
+                      <input type="text" name="phone_number" maxlength="15" required id="id_phone_number">
+                 </div>
+        
+        
+                    
+                    
+                     <div class="input_box">
+                      <label for="id_email">Email:</label>
+                      <input type="email" name="email" maxlength="254" autofocus required id="id_email">
+                    </div>
+                  </div>
+
+                  <div class="three7">
+                    <div class="input_box">
+                      
+                        <label for="id_password1">Password:</label>
+                        <input type="password" name="password1" autocomplete="new-password" required id="id_password1">
+                    </div>
+   
+                    <div class="input_box">
+                      <label for="id_password2">Password confirmation:</label>
+                      <input type="password" name="password2" autocomplete="new-password" required id="id_password2">
+                    </div>
+                  </div>
+
+                 </div>
+                 <button>ٍSign Up</button>
+
+             </form>
+         </div>
+         <div class="sign-up">
+            <button onclick="goToSign()"><p>Sign Up Now</p></button>
+            <button onclick="goToHome()"><p>Home</p></button>
+        </div>
+
+      <script>
+         function goToHome() {
+             window.location.href = "land.html";
+         }
+ 
+         function goToLogin() {
+             window.location.href = "login.html";
+         }
+     </script>
+   </body>
+</html>

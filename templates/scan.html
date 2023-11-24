@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scan</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.rawgit.com/cozmo/jsQR/master/dist/jsQR.js"></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <img src="../image/hub200.png" alt="" />
+      <div class="navbar_items">
+        <button class="headerbtn" onclick="goToHome()"><p>HOME</p></button>
+        <button class="headerbtn" onclick="goToEvents()"><p>EVENTS</p></button>
+        <button class="headerbtn" onclick="goToScan()"><p>SCAN</p></button>
+        <button class="headerbtn" onclick="goToAbout()"><p>ABOUT</p></button>
+      </div>
+      <div class="buts">
+        <button class="but1" onclick="goToSign()">Sign Up</button>
+        <button class="but2" onclick="goToLogin()">Log In</button>
+      </div>
+    </div>
+    <div class="body-scan">
+      <div class="scan-container">
+        <video id="qr-video" playsinline></video>
+        <canvas id="qr-canvas" style="display: none"></canvas>
+        <div id="output"></div>
+        <button id="start-scan-button">Start Scanning</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const video = document.getElementById("qr-video");
+        const canvas = document.getElementById("qr-canvas");
+        const output = document.getElementById("output");
+        const startScanButton = document.getElementById("start-scan-button");
+        const constraints = { video: true };
+        let scanning = false;
+        let stream = null;
+
+        startScanButton.addEventListener("click", () => {
+          if (scanning) {
+            stopScanning();
+          } else {
+            startScanning();
+          }
+        });
+
+        async function startScanning() {
+          try {
+            stream = await navigator.mediaDevices.getUserMedia(constraints);
+            video.srcObject = stream;
+            video.play().then(() => {
+              canvas.width = video.videoWidth;
+              canvas.height = video.videoHeight;
+
+              function scanQRCode() {
+                canvas
+                  .getContext("2d")
+                  .drawImage(video, 0, 0, canvas.width, canvas.height);
+                const imageData = canvas
+                  .getContext("2d")
+                  .getImageData(0, 0, canvas.width, canvas.height);
+                const code = jsQR(
+                  imageData.data,
+                  imageData.width,
+                  imageData.height
+                );
+
+                if (code) {
+                  output.textContent = code.data;
+                  stopScanning();
+                }
+
+                if (scanning) {
+                  requestAnimationFrame(scanQRCode);
+                }
+              }
+
+              scanning = true;
+              startScanButton.textContent = "Stop Scanning";
+              scanQRCode();
+            });
+          } catch (error) {
+            console.error("Error accessing the camera: " + error);
+          }
+        }
+
+        function stopScanning() {
+          if (stream) {
+            stream.getTracks().forEach((track) => track.stop());
+          }
+
+          video.srcObject = null;
+          scanning = false;
+          startScanButton.textContent = "Start Scanning";
+        }
+      });
+
+      function sendQRCodeDataToBackend(qrCodeData) {
+        const emailData = extractEmailData(qrCodeData);
+        const phoneData = extractPhoneData(qrCodeData);
+        const eventData = extractEventData(qrCodeData);
+
+        const dataToBackend = {
+          email: emailData,
+          phone_number: phoneData,
+          event: eventData,
+        };
+
+        fetch("/process_qr_code/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataToBackend),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Response from the backend:", data);
+          })
+          .catch((error) => {
+            console.error("Error sending QR code data:", error);
+          });
+      }
+
+      function goToHome() {
+        window.location.href = "land.html";
+      }
+
+      function goToEvents() {
+        window.location.href = "event.html";
+      }
+
+      function goToScan() {
+        window.location.href = "page2.html";
+      }
+
+      function goToSign() {
+        window.location.href = "sign.html";
+      }
+
+      function goToLogin() {
+        window.location.href = "login.html";
+      }
+
+      function goToAbout() {
+        window.location.href = "about.html";
+      }
+
+      function scrollToSection() {
+        var targetElement = document.getElementById("registeration");
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

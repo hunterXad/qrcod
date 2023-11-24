@@ -1,0 +1,258 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EVENT</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <script defer src="{% static 'popup.js' %}"></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <img src="{% static 'image/hub200.png' %}" alt="" />
+      <div class="navbar_items">
+        <button class="headerbtn" onclick="goToHome()"><p>HOME</p></button>
+        <button class="headerbtn" onclick="goToEvents()"><p>EVENTS</p></button>
+        <button class="headerbtn" onclick="goToScan()"><p>SCAN</p></button>
+        <button class="headerbtn" onclick="goToAbout()"><p>ABOUT</p></button>
+      </div>
+      <div class="buts">
+        <button class="but1" onclick="goToSign()">Sign Up</button>
+        <button class="but2" onclick="goToLogin()">Log In</button>
+      </div>
+    </div>
+    <div class="header2">
+      <h2>EVENTS</h2>
+      <div class="gallery">
+        <div class="gallery-container">
+          {% for event in events %}
+          <div class="gallery-item gallery-item-3" data-index="3" id="g3">
+            <img
+              src="{{ event.image.url }}"
+              alt="{{ event.name_event }} Image"
+              width="300"
+            />
+            <h1>{{ event.name_event }}</h1>
+            <p>{{ event.ditils }}</p>
+
+            <button data-modal-target="#modal">MORE</button>
+            <button onclick="scrollToSection()">REGISTER</button>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="gallery-controls"></div>
+        <div class="modal" id="modal">
+          <div class="modal-header">
+            <div class="title"><p>EVENT DESCRIPTON</p></div>
+            <div class="close">
+              <button data-close-button class="close-button">&times;</button>
+            </div>
+          </div>
+
+          <div class="modal-body">
+            <p>{{ event.ditils }}</p>
+          </div>
+          <button
+            onclick="scrollToSection()"
+            class="modal-btn"
+            data-close-button
+            class="close-button"
+          >
+            REGISTER
+          </button>
+        </div>
+        <div id="overlay"></div>
+      </div>
+    </div>
+
+    <div class="registeration" id="registeration">
+      <div class="container5">
+        <header>Registration</header>
+
+        <form method="POST">
+          {% csrf_token %}
+
+          <div class="details personal">
+            <span class="title">Personal Details</span>
+
+            <div class="fields">
+              <div class="input-field">
+                <label for="full_name">Full Name</label>
+                <input
+                  type="text"
+                  id="full_name"
+                  name="name"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <label for="event_select">Event</label>
+                <select id="event_select" name="event" required>
+                  <option disabled selected>Select an event</option>
+                  {% for event in events %}
+                  <option value="{{ event.id }}">{{ event.name_event }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="input-field">
+                <label for="age">Age</label>
+                <input
+                  type="number"
+                  id="age"
+                  name="age"
+                  placeholder="Enter your age"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <label for="mobile_number">Mobile Number</label>
+                <input
+                  type="text"
+                  id="mobile_number"
+                  name="phone_number"
+                  placeholder="Enter mobile number"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                  <option disabled selected>Select gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="details ID">
+            <span class="title1">Other Details</span>
+
+            <div class="fields">
+              <div class="input-field">
+                <label for="city">City</label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  placeholder="Enter Your City"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <label for="university">University</label>
+                <input type="text" id="university" name "university"
+                placeholder="Enter your university" required>
+              </div>
+              <div class="input-field">
+                <label for="study_section">Study Section</label>
+                <input
+                  type="text"
+                  id="study_section"
+                  name="study_section"
+                  placeholder="Enter study section"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <label>How Did You Know About This Event?</label>
+                <select required>
+                  <option disabled selected>Select</option>
+                  <option>From Friend</option>
+                  <option>From Social Media</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="input-field">
+                <label>Did You Visit HUB200 Before?</label>
+                <select required>
+                  <option disabled selected>Select</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="input-field">
+                <label for="arriving_at_time"
+                  >Arriving At The Required Time</label
+                >
+                <select id="arriving_at_time" name="arriving_at_time" required>
+                  <option disabled selected>Select</option>
+                  <option value="I Can">I Can</option>
+                  <option value="I'll Try">I'll Try</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="details address">
+            <span class="title">About</span>
+            <div class="fields">
+              <div class="input-field1">
+                <textarea
+                  name="about_me"
+                  rows="4"
+                  cols="50"
+                  placeholder="About Me"
+                  required
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="buttonss">
+            <button class="submit">
+              <span class="btnText">Submit</span>
+              <i class="uil uil-navigator"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script defer src="{% static 'script.js' %}"></script>
+    <script>
+      function goToHome() {
+        window.location.href = "{% url 'home' %}";
+      }
+
+      function goToEvents() {
+        window.location.href = "{% url 'all_events' %}";
+      }
+
+      function goToScan() {
+        window.location.href = "{% url 'scan' %}";
+      }
+
+      function goToSign() {
+        window.location.href = "{% url 'sign' %}";
+      }
+
+      function goToLogin() {
+        window.location.href = "{% url 'login' %}";
+      }
+      function goToAbout() {
+        window.location.href = "{% url 'about' %}";
+      }
+      function scrollToSection() {
+        var targetElement = document.getElementById("registeration");
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,233 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div class="navbar">
+      <img src="{% static 'image/hub200.png' %}" alt="" />
+      <div class="navbar_items">
+        <button class="headerbtn" onclick="goToHome()"><p>HOME</p></button>
+        <button class="headerbtn" onclick="goToEvents()"><p>EVENTS</p></button>
+        <button class="headerbtn" onclick="goToScan()"><p>SCAN</p></button>
+        <button class="headerbtn" onclick="goToAbout()"><p>ABOUT</p></button>
+      </div>
+      <div class="buts">
+        <button class="but1" onclick="goToSign()">Sign Up</button>
+        <button class="but2" onclick="goToLogin()">Log In</button>
+      </div>
+    </div>
+
+    <div class="slide-show-bg">
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <div class="slide-about1">
+            <div class="slide-top">
+              <img src="{% static 'image/3.jpg' %}" />
+              <p>
+                Baker Ahmed <br /><br />
+                Back-End Developer
+              </p>
+            </div>
+            <div class="slide-bottom">
+              <p>
+                Hello, I'm Baker Ahmed, a third-year Computer Engineering
+                student passionate about back-end programming and electronics.
+                Proficient in C, C++, Python, and experienced in web development
+                with Django, HTML, CSS, JS, and SQL. Committed to continuous
+                learning, I aim to create innovative and user-centric
+                applications. Beyond coding, I delve into electrical sciences,
+                seeking a perfect balance between academia and practical
+                projects. Excited about new opportunities and challenges in the
+                ever-evolving field of information technology
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="slide-about2">
+            <div class="slide-top">
+              <img src="{% static 'image/sera.jpg' %}" />
+              <p>
+                Ibraheem Esam<br /><br />
+                Front-End Developer
+              </p>
+            </div>
+            <div class="slide-bottom">
+              <p>
+                I am a computer engineering student from the Technical
+                University. I loved the field of programming and entered it in
+                general (back-end, front-end) Then I saw myself getting better
+                at (front-end) so I headed towards the ui/ux and the front-end
+                development and web50x graduation project was the first project
+                I had, and this is it in front of you. I hope you like it
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="slide-about3">
+            <div class="slide-top">
+              <img src="{% static 'image/ATH1.jpg' %}" />
+              <p>
+                Athraa Hussain<br /><br />
+                Front-End Developer
+              </p>
+            </div>
+            <div class="slide-bottom">
+              <p>
+                Hello, I am Athraa Hussein. I study third-year computer
+                technology engineering, specializing in electronics. I am
+                proficient in C++ and Frontend, such as CSS, HTML, and
+                JavaScript. I seek to develop myself further in this field after
+                university
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div style="text-align: center">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+
+    <div class="footer">
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div class="footer_items">
+        <div class="hub">
+          <img src="{% static 'image/hub200.png' %}" alt="" />
+          <p>Copyright 2023 by HUB200</p>
+        </div>
+        <div class="help">
+          Help?
+          <p>Lorem ipsum dolor</p>
+          <p>Excepteur sint occaecat cupidatat</p>
+          <p>consectetur adipiscing</p>
+          <p>Lorem ipsum dolor</p>
+          <p>Excepteur sint occaecat cupidatat</p>
+        </div>
+        <div class="docs">
+          Related Docs.
+          <p>Excepteur sint occaecat cupidatat</p>
+          <p>Lorem ipsum dolor</p>
+          <p>consectetur adipiscing</p>
+        </div>
+        <div class="follow">
+          <p>Follow Us</p>
+          <div class="social">
+            <ul>
+              <li>
+                <a class="facebook" href="#">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a class="twitter" href="#">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a class="instagram" href="#">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a class="google" href="#">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+          slideIndex = 1;
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 4000); //
+      }
+      function goToHome() {
+        window.location.href = "{% url 'home' %}";
+      }
+
+      function goToEvents() {
+        window.location.href = "{% url 'all_events' %}";
+      }
+
+      function goToScan() {
+        window.location.href = "{% url 'scan' %}";
+      }
+
+      function goToSign() {
+        window.location.href = "{% url 'sign' %}";
+      }
+
+      function goToLogin() {
+        window.location.href = "{% url 'login' %}";
+      }
+      function goToAbout() {
+        window.location.href = "{% url 'about' %}";
+      }
+
+      function scrollToSection() {
+        var targetElement = document.getElementById("registeration");
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

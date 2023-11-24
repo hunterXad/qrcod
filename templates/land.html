@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Sign Up</title>
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body>
+    <div class="area3" >
+        <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+</div >
+      <div class="body1">
+
+         <div class="container1">
+         
+            <form method="post">
+               {% csrf_token %}
+                 <h2>Sign Up</h2>
+     
+                 <div class="container7">
+                  <div class="one7">
+                     <div class="input_box">
+                      
+                      <label for="">First name:</label>
+                      {{ form.first_name}}
+                    </div>
+        
+                    <div class="input_box">
+                      <label for="id_last_name">Last name:</label>
+                      {{ form.last_name}}
+                    </div>
+                  </div>
+   
+                  <div class="two7">
+                    <div class="input_box">
+                      <label for="id_phone_number">Phone number:</label>
+                      {{ form.phone_number}}
+                 </div>
+        
+        
+                    
+                    
+                     <div class="input_box">
+                      <label for="id_email">Email:</label>
+                      {{ form.email}}
+                    </div>
+                  </div>
+
+                  <div class="three7">
+                    <div class="input_box">
+                      
+                        <label for="id_password1">Password:</label>
+                        {{ form.password1}}
+                    </div>
+   
+                    <div class="input_box">
+                      <label for="id_password2">Password confirmation:</label>
+                      {{ form.password2}}
+                    </div>
+                  </div>
+
+                 </div>
+                 <button>ٍSign Up</button>
+
+             </form>
+             {% if form.errors %}
+             <div class="errors">
+               <h3>Error(s) occurred:</h3>
+               <ul>
+                 {% for field, errors in form.errors.items %}
+                   <li>{{ field }}: {{ errors.0 }}</li>
+                 {% endfor %}
+               </ul>
+             </div>
+           {% endif %}
+         </div>
+         <div class="sign-up">
+            <button onclick="goToLogin()"><p>login</p></button>
+            <button onclick="goToHome()"><p>Home</p></button>
+        </div>
+
+      <script>
+         function goToHome() {
+             window.location.href = "{% url 'home' %}";
+         }
+ 
+         function goToLogin() {
+             window.location.href = "{% url 'login' %}";
+         }
+     </script>
+   </body>
+</html>
